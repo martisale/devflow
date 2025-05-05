@@ -3,6 +3,7 @@ import Link from "next/link";
 import ROUTES from "@/constants/routes";
 import LocalSearch from "@/components/search/LocalSearch";
 import HomeFilter from "@/components/filters/HomeFilter";
+import QuestionCard from "@/components/cards/QuestionCard";
 const questions = [
   {
     _id: "1",
@@ -22,7 +23,8 @@ const questions = [
     author: {
       _id: "1",
       name: "John Doe",
-      picture: "https://via.placeholder.com/150",
+      picture:
+        "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
     },
     upvotes: 10,
     answers: 5,
@@ -47,11 +49,12 @@ const questions = [
     author: {
       _id: "1",
       name: "John Doe",
-      picture: "https://via.placeholder.com/150",
+      picture:
+        "https://plus.unsplash.com/premium_photo-1689568126014-06fea9d5d341?fm=jpg&q=60&w=3000&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8cHJvZmlsZXxlbnwwfHwwfHx8MA%3D%3D",
     },
-    upvotes: 10,
-    answers: 5,
-    views: 100,
+    upvotes: 16,
+    answers: 12,
+    views: 320,
     createdAt: new Date(),
   },
 ];
@@ -67,7 +70,6 @@ const Home = async ({ searchParams }: SearchParams) => {
     const matchesQuery = question.title
       .toLowerCase()
       .includes(query?.toLowerCase());
-    console.log(matchesQuery);
     const matchesFilter = filter
       ? question.tags[0].name.toLowerCase() === filter.toLowerCase()
       : true;
@@ -96,7 +98,7 @@ const Home = async ({ searchParams }: SearchParams) => {
       <HomeFilter />
       <div className="mt-10 flex w_full flex-col gap-6">
         {filteredQuestions.map((question) => (
-          <h1 key={question._id}>{question.title}</h1>
+          <QuestionCard key={question._id} question={question} />
         ))}
       </div>
     </>
