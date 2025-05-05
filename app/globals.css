@@ -74,11 +74,7 @@
   }
 
   .dark .background-light800_darkgradient {
-    background-image: linear-gradient(
-      232deg,
-      rgba(23, 28, 35, 0.41) 0%,
-      rgba(19, 22, 28, 0.7) 100%
-    );
+    background-color: #111 !important;
   }
 
   .background-light800_dark400 {
@@ -172,6 +168,10 @@
 
   .text-dark400_light700 {
     color: theme("colors.dark.400");
+  }
+
+  .dark .placeholder-dark400_light700::placeholder {
+    color: theme("colors.light.700") !important;
   }
 
   .dark .text-dark400_light700 {
@@ -622,6 +622,16 @@
 
   .dark .tab[data-state="active"] {
     background-color: theme("colors.dark.300");
+  }
+
+  .search-icon {
+    filter: brightness(0) saturate(100%) invert(40%) sepia(0%) saturate(0%)
+      hue-rotate(180deg) brightness(90%) contrast(90%);
+  }
+
+  .dark .search-icon {
+    filter: brightness(0) saturate(100%) invert(100%) sepia(0%) saturate(0%)
+      hue-rotate(180deg) brightness(90%) contrast(90%);
   }
 }
 
