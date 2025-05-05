@@ -57,17 +57,16 @@ const questions = [
 ];
 
 interface SearchParams {
-  searchParams: { [key: string]: string };
+  searchParams: Promise<{ [key: string]: string }>;
 }
 
-const Home = ({ searchParams }: SearchParams) => {
-  const { query = "" } = searchParams;
+const Home = async ({ searchParams }: SearchParams) => {
+  const { query = "" } = await searchParams;
 
   const filteredQuestions = questions.filter((question) =>
     question.title.toLowerCase().includes(query?.toLowerCase())
   );
 
-  console.log(filteredQuestions);
   return (
     <>
       <section className="w-full flex flex-col-reverse sm:flex-row justify-between gap-4 sm:items-center">

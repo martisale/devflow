@@ -19,8 +19,6 @@ const LocalSearch = ({ route, imgSrc, placeholder, otherClasses }: Props) => {
   const searchParams = useSearchParams();
   const query = searchParams.get("query") || "";
 
-  console.log();
-
   const [searchQuery, setSearchQuery] = useState(query);
 
   useEffect(() => {
